@@ -127,3 +127,14 @@ button {
     font-size: 20px;
 }
 
+.error {
+    display: ;
+    margin-top: 5px;
+}
+
+.error span {
+    display: inline-block;
+    color: var(--orange-700);
+    font-size: 12px;
+}
+
