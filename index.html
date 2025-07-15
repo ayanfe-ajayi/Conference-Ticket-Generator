@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="images/favicon-32x32.png" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Conference Ticket Generator</title>
+  </head>
+  <body>
+    <main>
+      <img src="images/logo-full.svg" alt="coding conference logo and name" />
+      <h2>Your Journey to Coding Conf 2025 Starts Here!</h2>
+      <p>Secure your spot at next year's biggest coding conference.</p>
+
+      <form action="">
+        <div class="input-group">
+          <label>Upload Avatar</label>
+          <label for="avatar-upload" class="avatar-upload">
+            <img src="images/icon-upload.svg" alt="avatar upload icon" />
+            <span>Drag and drop or click to upload</span>
+          </label>
+          <input
+            type="file"
+            name="avatar-upload"
+            id="avatar-upload"
+            accept=".jpg,.jpeg,.png"
+          />
+          <div class="avatar-upload-info">
+            <img src="images/icon-info.svg" alt="info icon" />
+            <span>Upload your photo (JPG or PNG, max size: 500px).</span>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="full-name">Full Name</label>
+          <input type="text" name="full-name" id="full-name" />
+        </div>
+
+        <div class="input-group">
+          <label for="email-address">Email Address</label>
+          <input type="email" name="email" id="email-address" placeholder="example@email.com" />
+        </div>
+
+        <div class="input-group">
+          <label for="github-username">Github Username</label>
+          <input type="text" name="github-username" id="github-username" placeholder="@yourusername" />
+        </div>
+
+        <button type="submit">Generate My Ticket</button>
+      </form>
+    </main>
+  </body>
+</html>
