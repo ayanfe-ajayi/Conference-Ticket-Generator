@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="images/favicon-32x32.png" />
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css" />
     <title>Conference Ticket Generator</title>
   </head>
   <body>
@@ -16,7 +16,11 @@
       <form action="">
         <div class="input-group">
           <label>Upload Avatar</label>
-          <label for="avatar-upload" class="avatar-upload">
+          <label
+            for="avatar-upload"
+            id="avatar-upload-container"
+            class="avatar-upload"
+          >
             <img src="images/icon-upload.svg" alt="avatar upload icon" />
             <span>Drag and drop or click to upload</span>
           </label>
@@ -26,7 +30,8 @@
             id="avatar-upload"
             accept=".jpg,.jpeg,.png"
           />
-          <div class="avatar-upload-info">
+          <div class="preview" id="preview"></div>
+          <div class="avatar-upload-info info" id="avatar-upload-info">
             <img src="images/icon-info.svg" alt="info icon" />
             <span>Upload your photo (JPG or PNG, max size: 500px).</span>
           </div>
@@ -39,20 +44,28 @@
 
         <div class="input-group">
           <label for="email-address">Email Address</label>
-          <input type="email" name="email" id="email-address" placeholder="example@email.com" />
-          <div class="error">
-            <img src="images/icon-info.svg" alt="info icon" />
-            <span>Please enter a valid email address.</span>
-          </div>
+          <input
+            type="email"
+            name="email"
+            id="email-address"
+            placeholder="example@email.com"
+          />
+          <div class="error info" id="email-error"></div>
         </div>
 
         <div class="input-group">
           <label for="github-username">Github Username</label>
-          <input type="text" name="github-username" id="github-username" placeholder="@yourusername" />
+          <input
+            type="text"
+            name="github-username"
+            id="github-username"
+            placeholder="@yourusername"
+          />
         </div>
 
-        <button type="submit">Generate My Ticket</button>
+        <button class="generate-btn" type="submit">Generate My Ticket</button>
       </form>
     </main>
+    <script src="./script.js"></script>
   </body>
 </html>
