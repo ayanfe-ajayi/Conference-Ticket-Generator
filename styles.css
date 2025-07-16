@@ -128,6 +128,10 @@ input {
     color: var(--neutral-0);
 }
 
+input:not(:placeholder-shown) {
+    background-color: inherit;
+}
+
 input::placeholder {
     color: var(--neutral-300);
 }
