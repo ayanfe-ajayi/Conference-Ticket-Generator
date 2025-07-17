@@ -96,9 +96,9 @@ ticketForm.addEventListener("submit", (e) => {
   } else {
     const ticket = {
       image: uploadedImage,
-      "fName": fullName,
+      fName: fullName,
       email: email,
-      "gitUsername": gitHubUsername,
+      gitUsername: gitHubUsername,
     };
     showTicketPage(ticket);
 
@@ -164,7 +164,6 @@ const showTicketPage = (ticket) => {
   const { image, fName, email, gitUsername } = ticket;
   const [firstName, lastName] = fName.split(" ");
 
-
   ticketPage.innerHTML = `
   <h1>
         Congrats, <span class="text-gradient">${firstName} </span
@@ -187,7 +186,11 @@ const showTicketPage = (ticket) => {
           <div class="wrapper">
             <p class="full-name">${fName}</p>
             <div class="github-details">
-              <img src="images/icon-github.svg" alt="github icon" />
+              ${
+                gitUsername
+                  ? '<img src="images/icon-github.svg"  alt="github icon" />'
+                  : ""
+              }
               <span>${gitUsername}</span>
             </div>
           </div>
@@ -200,4 +203,4 @@ const showTicketPage = (ticket) => {
     </div>
   `;
   mainPage.style.display = "none";
-}
+};
