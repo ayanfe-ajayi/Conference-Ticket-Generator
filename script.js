@@ -2,6 +2,9 @@ const ticketForm = document.getElementById("ticket-form");
 const avatarUploadContainer = document.getElementById(
   "avatar-upload-container"
 );
+
+const mainPage = document.getElementById("main-page");
+
 const avatarPreview = document.getElementById("preview");
 const avatarUpload = document.getElementById("avatar-upload");
 const avatarUploadInfo = document.getElementById("avatar-upload-info");
@@ -15,19 +18,14 @@ const fullNameInput = document.getElementById("full-name");
 let uploadedImage = null;
 let avatarPictureCorrect = false;
 
-/* 
-
-    avatarUploadError.innerHTML = `<img src="images/icon-info.svg" alt="info icon" />
-            <span>Upload your photo (JPG or PNG, max size: 500px).</span>
-            `;
-    avatarUploadError.className = "info error";
-*/
 fullNameInput.addEventListener("input", () => {
   nameError.style.display = "none";
+  fullNameInput.style.borderColor = "var(--neutral-300)";
 });
 
 emailInput.addEventListener("input", () => {
   emailError.style.display = "none";
+  emailInput.style.borderColor = "var(--neutral-300)";
 });
 
 avatarUpload.addEventListener("change", function () {
@@ -84,22 +82,27 @@ ticketForm.addEventListener("submit", (e) => {
 
   if (!avatarPictureCorrect) {
     displayError(avatarUploadInfo);
+    return;
   }
 
   if (!isValidFullName(fullName)) {
     displayError(nameError);
+    return;
   }
 
   if (!isValidEmail(email)) {
     displayError(emailError);
+    return;
   } else {
     const ticket = {
       image: uploadedImage,
-      "full name": fullName,
+      "fName": fullName,
       email: email,
-      "github username": gitHubUsername,
+      "gitUsername": gitHubUsername,
     };
-    console.log(ticket);
+    showTicketPage(ticket);
+
+    ticketForm.reset();
   }
 });
 
@@ -127,6 +130,7 @@ const removeImage = () => {
   avatarPreview.innerHTML = "";
   avatarPreview.style.display = "none";
   avatarUploadContainer.style.display = "flex";
+  avatarPictureCorrect = false;
 };
 
 const displayError = (element) => {
@@ -153,3 +157,47 @@ const displayError = (element) => {
     avatarUploadContainer.style.borderColor = "hsl(7, 71%, 60%)";
   }
 };
+
+const showTicketPage = (ticket) => {
+  const ticketPage = document.getElementById("ticket-page");
+
+  const { image, fName, email, gitUsername } = ticket;
+  const [firstName, lastName] = fName.split(" ");
+
+
+  ticketPage.innerHTML = `
+  <h1>
+        Congrats, <span class="text-gradient">${firstName} </span
+        ><span class="text-gradient">${lastName}!</span> Your ticket is ready.
+      </h1>
+      <p class="description">
+        We've emailed your ticket to <span>${email}</span> and will
+        send updates in the run up to the event.
+      </p>
+      <div class="ticket-container">
+        <div class="ticket-details">
+          <div class="logo-and-text">
+            <img class="logo" src="images/logo-mark.svg" alt="logo" />
+            <p class="event-name">Coding Conf</p>
+          </div>
+          <p class="date">Jan 31, 2025 / Austin, TX</p>
+        </div>
+        <div class="user-details">
+          <img src="${image}" alt="user image" />
+          <div class="wrapper">
+            <p class="full-name">${fName}</p>
+            <div class="github-details">
+              <img src="images/icon-github.svg" alt="github icon" />
+              <span>${gitUsername}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-number">
+          <span>#01609</span>
+        </div>
+      </div>
+    </div>
+  `;
+  mainPage.style.display = "none";
+}
