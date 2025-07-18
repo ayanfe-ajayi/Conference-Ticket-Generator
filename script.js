@@ -203,4 +203,5 @@ const showTicketPage = (ticket) => {
     </div>
   `;
   mainPage.style.display = "none";
+  ticketPage.style.display = "block";
 };

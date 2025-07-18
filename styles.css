@@ -31,7 +31,7 @@
 }
 
 body {
-  font-family: 'Inconsolata';
+  font-family: 'Inconsolata', sans-serif;
   background-image: url(images/pattern-lines.svg),
     url(images/pattern-squiggly-line-top.svg), url(images/pattern-circle.svg),
     url(images/pattern-squiggly-line-bottom-mobile-tablet.svg),
@@ -40,6 +40,7 @@ body {
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
   background-size: 1000px, 150px, 200px, 250px, cover;
   background-position: top, top right, right, bottom left, center;
+
   font-size: 18px;
 }
 
@@ -55,7 +56,7 @@ main {
 
 .header-img {
   display: block;
-  margin: 20px auto;
+  margin: 30px auto 20px auto;
 }
 
 form {
@@ -333,4 +334,43 @@ input[type='file'] {
 .order-number span {
   font-size: 25px;
   color: var(--neutral-500);
+}
+
+@media (min-width: 600px) {
+  body {
+    font-size: 20px;
+
+    background-image: url(images/pattern-lines.svg),
+    url(images/pattern-squiggly-line-top.svg), url(images/pattern-circle.svg),
+    url(images/pattern-squiggly-line-bottom-mobile-tablet.svg),
+    url(images/background-tablet.png);
+
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 1000px, 300px, 200px, 500px, cover;
+  background-position: top, top right, right, bottom left, center;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 20px;
+    background-image: url(images/pattern-lines.svg),
+      url(images/pattern-squiggly-line-top.svg), url(images/pattern-circle.svg),
+      url(images/pattern-squiggly-line-bottom-desktop.svg),
+      url(images/background-desktop.png);
+
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+    background-size: 1000px, 700px, 200px, 700px, cover;
+    background-position: top, top right, right 400px center, left bottom, center;
+  }
+
+  h2 {
+    font-size: 45px;
+  }
+  main {
+    min-width: 700px;
+  }
+  form {
+    width: 500px;
+  }
 }
